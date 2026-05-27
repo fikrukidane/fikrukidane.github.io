@@ -157,31 +157,38 @@
       min-height: 46px;
       padding: 0 18px;
       border-radius: 12px;
-      border: 1px solid transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       font-weight: 600;
-      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, opacity 0.18s ease;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
     }
 
     .button:hover,
     .button:focus-visible {
       transform: translateY(-1px);
+      border-color: rgba(110, 231, 249, 0.28);
+      background: rgba(255, 255, 255, 0.07);
     }
 
     .button-primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      border-color: transparent;
       color: #08111f;
     }
 
-    .button-secondary {
-      background: rgba(255, 255, 255, 0.04);
-      border-color: rgba(255, 255, 255, 0.1);
-      color: var(--text);
+    .button-primary:hover,
+    .button-primary:focus-visible {
+      background: linear-gradient(135deg, #82ecfb, #74b5ff);
+      border-color: transparent;
     }
 
-    .hero-note {
+    .button-disabled {
+      background: rgba(159, 176, 211, 0.08);
       color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 0;
+      border-color: rgba(159, 176, 211, 0.12);
+      cursor: default;
+      pointer-events: none;
     }
 
     .hero-aside {
@@ -277,23 +284,10 @@
       margin-bottom: 16px;
     }
 
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+    .stack-line {
+      color: #cfe0ff;
+      font-size: 0.94rem;
       margin-bottom: 18px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 7px 10px;
-      border-radius: 999px;
-      background: rgba(159, 176, 211, 0.09);
-      border: 1px solid rgba(159, 176, 211, 0.16);
-      color: #dce7ff;
-      font-size: 0.84rem;
-      line-height: 1.2;
     }
 
     .project-actions {
@@ -301,16 +295,7 @@
     }
 
     .project-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 14px;
-      border-radius: 12px;
-      background: rgba(96, 165, 250, 0.14);
-      border: 1px solid rgba(96, 165, 250, 0.22);
-      color: #dff4ff;
-      font-weight: 600;
+      min-width: 170px;
     }
 
     .focus-grid,
@@ -466,14 +451,12 @@
 
           <div class="cta-group">
             <a class="button button-primary" href="https://github.com/fikrukidane" target="_blank" rel="noreferrer">View GitHub</a>
-            <!-- Replace this resume file path if your final PDF filename or location changes. -->
-            <a class="button button-secondary" href="./Frank-Kidane-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
-            <!-- Replace the LinkedIn URL below with your actual public LinkedIn profile URL. -->
-            <a class="button button-secondary" href="[add LinkedIn URL]" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
-            <a class="button button-secondary" href="mailto:fikru.kidane@protonmail.com">Email Me</a>
+            <!-- TODO: Upload Frank-Kidane-Resume.pdf to repo root -->
+            <a class="button" href="./Frank-Kidane-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <!-- TODO: Replace # with final LinkedIn URL -->
+            <a class="button" href="#" aria-label="LinkedIn">LinkedIn</a>
+            <a class="button" href="mailto:fikru.kidane@protonmail.com">Email Me</a>
           </div>
-
-          <p class="hero-note">Public-facing name: Frank Kidane. Professional/legal name, if needed in formal documents: Fikru Yifter Kidane.</p>
         </div>
 
         <aside class="hero-aside" aria-label="Highlights">
@@ -507,18 +490,10 @@
                 <h3>FYK Finance Tracker</h3>
                 <div class="project-subtitle">AI-Powered Local Finance Intelligence</div>
                 <p>Local-first personal finance intelligence system using Plaid, Python, Telegram, Docker, and Ollama. Generates automated reports, anomaly insights, and private local LLM-based financial Q&amp;A without exposing financial data to the cloud.</p>
-                <div class="stack" aria-label="FYK Finance Tracker stack">
-                  <span class="tag">Python</span>
-                  <span class="tag">Plaid API</span>
-                  <span class="tag">pandas</span>
-                  <span class="tag">Docker</span>
-                  <span class="tag">Ollama</span>
-                  <span class="tag">Telegram Bot API</span>
-                  <span class="tag">WSL2</span>
-                </div>
+                <p class="stack-line">Python · Plaid API · pandas · Docker · Ollama · Telegram Bot API · WSL2</p>
               </div>
               <div class="project-actions">
-                <a class="project-link" href="https://github.com/fikrukidane/finance-tracker-demo" target="_blank" rel="noreferrer">View Demo Repo</a>
+                <a class="button project-link" href="https://github.com/fikrukidane/finance-tracker-demo" target="_blank" rel="noreferrer">View Demo Repo</a>
               </div>
             </article>
 
@@ -527,19 +502,10 @@
                 <h3>TSIRD Atlas</h3>
                 <div class="project-subtitle">Production Geospatial Data Engineering Platform</div>
                 <p>Containerized GIS data engineering platform for spatial ETL, PostGIS, MapServer, vector normalization, registry-driven layer management, and multilingual geospatial search.</p>
-                <div class="stack" aria-label="TSIRD Atlas stack">
-                  <span class="tag">Docker</span>
-                  <span class="tag">PostGIS</span>
-                  <span class="tag">MapServer</span>
-                  <span class="tag">Python</span>
-                  <span class="tag">GDAL</span>
-                  <span class="tag">GeoPandas</span>
-                  <span class="tag">Nginx</span>
-                  <span class="tag">OpenLayers</span>
-                </div>
+                <p class="stack-line">Docker · PostGIS · MapServer · Python · GDAL · GeoPandas · Nginx · OpenLayers</p>
               </div>
               <div class="project-actions">
-                <a class="project-link" href="https://github.com/fikrukidane/tsird-atlas" target="_blank" rel="noreferrer">View Repo</a>
+                <a class="button project-link" href="https://github.com/fikrukidane/tsird-atlas" target="_blank" rel="noreferrer">View Repo</a>
               </div>
             </article>
 
@@ -548,17 +514,10 @@
                 <h3>ETL Pipeline on Google Cloud Platform</h3>
                 <div class="project-subtitle">Cloud-Native Data Engineering Pipeline</div>
                 <p>Secure and scalable ETL pipeline using Cloud Data Fusion, Airflow, BigQuery, Cloud Storage, and Python for automated data processing and analytics.</p>
-                <div class="stack" aria-label="GCP ETL stack">
-                  <span class="tag">GCP</span>
-                  <span class="tag">Cloud Data Fusion</span>
-                  <span class="tag">Airflow</span>
-                  <span class="tag">BigQuery</span>
-                  <span class="tag">Cloud Storage</span>
-                  <span class="tag">Python</span>
-                </div>
+                <p class="stack-line">GCP · Cloud Data Fusion · Airflow · BigQuery · Cloud Storage · Python</p>
               </div>
               <div class="project-actions">
-                <a class="project-link" href="https://github.com/fikrukidane/ETL-Pipeline-on-Google-Cloud" target="_blank" rel="noreferrer">View Repo</a>
+                <a class="button project-link" href="https://github.com/fikrukidane/ETL-Pipeline-on-Google-Cloud" target="_blank" rel="noreferrer">View Repo</a>
               </div>
             </article>
 
@@ -567,18 +526,10 @@
                 <h3>Parking Ops Intelligence Bot</h3>
                 <div class="project-subtitle">AI-Assisted Operational Workflow System</div>
                 <p>Voice-first operational assistant using Telegram, Whisper, Ollama, Docker, SQLite, and Flask to convert field observations into structured incidents, follow-ups, handoffs, and communication coaching.</p>
-                <div class="stack" aria-label="Parking Ops Intelligence Bot stack">
-                  <span class="tag">Telegram Bot</span>
-                  <span class="tag">Whisper</span>
-                  <span class="tag">Ollama</span>
-                  <span class="tag">Docker</span>
-                  <span class="tag">SQLite</span>
-                  <span class="tag">Flask</span>
-                  <span class="tag">Python</span>
-                </div>
+                <p class="stack-line">Telegram Bot · Whisper · Ollama · Docker · SQLite · Flask · Python</p>
               </div>
               <div class="project-actions">
-                <a class="project-link" href="#contact">View Project or Coming Soon</a>
+                <span class="button button-disabled project-link" aria-disabled="true">Demo Coming Soon</span>
               </div>
             </article>
           </div>
@@ -698,8 +649,8 @@
             </div>
             <div class="contact-item">
               <h3>LinkedIn</h3>
-              <!-- Replace the LinkedIn URL below with your real profile URL. -->
-              <p><a href="[add LinkedIn URL]" target="_blank" rel="noreferrer">[add LinkedIn URL]</a></p>
+              <!-- TODO: Replace # with final LinkedIn URL -->
+              <p><a href="#" aria-label="LinkedIn">LinkedIn</a></p>
             </div>
             <div class="contact-item">
               <h3>Email</h3>
