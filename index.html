@@ -3,137 +3,720 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Frank Kidane — Business Analysis, Solution Architecture, GIS/ETL, Data Engineering, and AI Workflow Systems." />
   <title>Frank Kidane | Portfolio</title>
-
   <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121932;
+      --panel: rgba(18, 25, 50, 0.82);
+      --panel-strong: #182243;
+      --text: #eef2ff;
+      --muted: #9fb0d3;
+      --accent: #6ee7f9;
+      --accent-strong: #60a5fa;
+      --border: rgba(159, 176, 211, 0.16);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --max-width: 1120px;
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0f1117;
-      color: #f1f1f1;
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 50px 20px;
-    }
-
-    h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-
-    .tagline {
-      font-size: 18px;
-      color: #9fb3c8;
-      margin-bottom: 40px;
-    }
-
-    h2 {
-      margin-top: 50px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 10px;
-    }
-
-    .project {
-      margin-top: 25px;
-      padding: 20px;
-      background: #171b24;
-      border-radius: 10px;
-    }
-
-    .project h3 {
-      margin-top: 0;
-      color: #61dafb;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(110, 231, 249, 0.12), transparent 28%),
+        linear-gradient(180deg, #0b1020 0%, #0a0f1c 100%);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
     }
 
     a {
-      color: #61dafb;
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      text-decoration: underline;
+    img {
+      max-width: 100%;
+      display: block;
     }
 
-    .footer {
-      margin-top: 60px;
-      color: #888;
-      font-size: 14px;
+    .page-shell {
+      width: min(var(--max-width), calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 24px 0 56px;
     }
 
-    .links a {
-      margin-right: 20px;
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 0 24px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .hero,
+    .section-card {
+      background: var(--panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.45fr 0.95fr;
+      gap: 28px;
+      padding: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -30% auto;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(110, 231, 249, 0.22), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(110, 231, 249, 0.22);
+      border-radius: 999px;
+      color: var(--accent);
+      background: rgba(110, 231, 249, 0.08);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .intro {
+      max-width: 62ch;
+      font-size: 1.06rem;
+      color: #dbe5ff;
+      margin-bottom: 28px;
+    }
+
+    .cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: #08111f;
+    }
+
+    .button-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+    }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .hero-aside {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .mini-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+    }
+
+    .mini-card h3 {
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .mini-card p,
+    .mini-card li {
+      color: #d7e1fb;
+      font-size: 0.96rem;
+      margin-bottom: 0;
+    }
+
+    .mini-card ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .section {
+      margin-top: 26px;
+    }
+
+    .section-card {
+      padding: 30px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      margin-bottom: 6px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      margin-bottom: 0;
+      max-width: 60ch;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .project-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .project-subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: #d9e3fb;
+      margin-bottom: 16px;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(159, 176, 211, 0.09);
+      border: 1px solid rgba(159, 176, 211, 0.16);
+      color: #dce7ff;
+      font-size: 0.84rem;
+      line-height: 1.2;
+    }
+
+    .project-actions {
+      margin-top: auto;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 12px;
+      background: rgba(96, 165, 250, 0.14);
+      border: 1px solid rgba(96, 165, 250, 0.22);
+      color: #dff4ff;
+      font-weight: 600;
+    }
+
+    .focus-grid,
+    .tech-groups,
+    .background-grid,
+    .contact-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .focus-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .focus-item,
+    .tech-group,
+    .contact-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .focus-item {
+      text-align: center;
+      font-weight: 600;
+      color: #e7efff;
+    }
+
+    .tech-groups {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .tech-group h3,
+    .contact-item h3 {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: var(--accent);
+    }
+
+    .tech-group p,
+    .contact-item p,
+    .background-grid li {
+      color: #d8e3ff;
+      margin-bottom: 0;
+    }
+
+    .background-grid {
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: start;
+    }
+
+    .background-grid ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .availability {
+      background: linear-gradient(180deg, rgba(96, 165, 250, 0.1), rgba(110, 231, 249, 0.06));
+      border: 1px solid rgba(110, 231, 249, 0.18);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .availability strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .contact-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .contact-item a {
+      color: #ffffff;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 28px 0 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .background-grid,
+      .contact-grid,
+      .tech-groups,
+      .focus-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 28px;
+      }
+
+      .section-card {
+        padding: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(var(--max-width), calc(100% - 1rem));
+        padding-top: 14px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 18px;
+      }
+
+      .hero,
+      .section-card {
+        border-radius: 18px;
+      }
+
+      .hero {
+        padding: 22px;
+        gap: 20px;
+      }
+
+      .button,
+      .project-link {
+        width: 100%;
+      }
+
+      .cta-group {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
-
 <body>
+  <div class="page-shell">
+    <header class="topbar" aria-label="Site header">
+      <div class="brand">Frank Kidane</div>
+      <div>Dallas, Texas • Portfolio landing page</div>
+    </header>
 
-  <div class="container">
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">Business Analysis • Solution Architecture • GIS/ETL • AI Workflow Systems</div>
+          <h1 id="hero-title">Frank Kidane</h1>
+          <p class="subtitle">Experienced Business Analyst and Solution Architecture professional with 20+ years of experience across telecom, geospatial systems, data engineering, BI, and AI-assisted workflow systems.</p>
+          <p class="intro">I design and build data, geospatial, and AI-assisted workflow systems that turn complex operations into structured intelligence.</p>
 
-    <h1>Frank Kidane</h1>
+          <div class="cta-group">
+            <a class="button button-primary" href="https://github.com/fikrukidane" target="_blank" rel="noreferrer">View GitHub</a>
+            <!-- Replace this resume file path if your final PDF filename or location changes. -->
+            <a class="button button-secondary" href="./Frank-Kidane-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <!-- Replace the LinkedIn URL below with your actual public LinkedIn profile URL. -->
+            <a class="button button-secondary" href="[add LinkedIn URL]" target="_blank" rel="noreferrer">Connect on LinkedIn</a>
+            <a class="button button-secondary" href="mailto:fikru.kidane@protonmail.com">Email Me</a>
+          </div>
 
-    <div class="tagline">
-      Business Analysis • Solution Architecture • GIS/ETL • AI Workflow Systems
-    </div>
+          <p class="hero-note">Public-facing name: Frank Kidane. Professional/legal name, if needed in formal documents: Fikru Yifter Kidane.</p>
+        </div>
 
-    <p>
-      Experienced Business Analyst and Solution Architecture professional
-      with background in telecommunications systems, GIS/ETL workflows,
-      operational intelligence, data engineering, and AI-assisted workflow systems.
-    </p>
+        <aside class="hero-aside" aria-label="Highlights">
+          <div class="mini-card">
+            <h3>What I build</h3>
+            <p>Structured systems for operational intelligence, decision support, geospatial workflows, and private AI-assisted automation.</p>
+          </div>
+          <div class="mini-card">
+            <h3>Core strengths</h3>
+            <ul>
+              <li>Turning complex business processes into scalable system design</li>
+              <li>Bridging business analysis, architecture, and implementation</li>
+              <li>Building data pipelines, GIS platforms, and AI workflow tools</li>
+            </ul>
+          </div>
+        </aside>
+      </section>
 
-    <p>
-      Focused on transforming complex operational processes into structured,
-      scalable, and data-driven systems.
-    </p>
+      <section class="section">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Featured Projects</h2>
+              <p>Selected work spanning private finance intelligence, geospatial platforms, cloud ETL, and AI-assisted operations.</p>
+            </div>
+          </div>
 
-    <div class="links">
-      <a href="https://github.com/fikrukidane" target="_blank">GitHub</a>
-      <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-      <a href="mailto:your-email@example.com">Email</a>
-    </div>
+          <div class="projects-grid">
+            <article class="project-card">
+              <div>
+                <h3>FYK Finance Tracker</h3>
+                <div class="project-subtitle">AI-Powered Local Finance Intelligence</div>
+                <p>Local-first personal finance intelligence system using Plaid, Python, Telegram, Docker, and Ollama. Generates automated reports, anomaly insights, and private local LLM-based financial Q&amp;A without exposing financial data to the cloud.</p>
+                <div class="stack" aria-label="FYK Finance Tracker stack">
+                  <span class="tag">Python</span>
+                  <span class="tag">Plaid API</span>
+                  <span class="tag">pandas</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">Ollama</span>
+                  <span class="tag">Telegram Bot API</span>
+                  <span class="tag">WSL2</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/fikrukidane/finance-tracker-demo" target="_blank" rel="noreferrer">View Demo Repo</a>
+              </div>
+            </article>
 
-    <h2>Featured Projects</h2>
+            <article class="project-card">
+              <div>
+                <h3>TSIRD Atlas</h3>
+                <div class="project-subtitle">Production Geospatial Data Engineering Platform</div>
+                <p>Containerized GIS data engineering platform for spatial ETL, PostGIS, MapServer, vector normalization, registry-driven layer management, and multilingual geospatial search.</p>
+                <div class="stack" aria-label="TSIRD Atlas stack">
+                  <span class="tag">Docker</span>
+                  <span class="tag">PostGIS</span>
+                  <span class="tag">MapServer</span>
+                  <span class="tag">Python</span>
+                  <span class="tag">GDAL</span>
+                  <span class="tag">GeoPandas</span>
+                  <span class="tag">Nginx</span>
+                  <span class="tag">OpenLayers</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/fikrukidane/tsird-atlas" target="_blank" rel="noreferrer">View Repo</a>
+              </div>
+            </article>
 
-    <div class="project">
-      <h3>TSIRD Atlas</h3>
-      <p>
-        GIS and spatial data infrastructure platform focused on geospatial ETL,
-        mapping workflows, and operational spatial intelligence.
-      </p>
-    </div>
+            <article class="project-card">
+              <div>
+                <h3>ETL Pipeline on Google Cloud Platform</h3>
+                <div class="project-subtitle">Cloud-Native Data Engineering Pipeline</div>
+                <p>Secure and scalable ETL pipeline using Cloud Data Fusion, Airflow, BigQuery, Cloud Storage, and Python for automated data processing and analytics.</p>
+                <div class="stack" aria-label="GCP ETL stack">
+                  <span class="tag">GCP</span>
+                  <span class="tag">Cloud Data Fusion</span>
+                  <span class="tag">Airflow</span>
+                  <span class="tag">BigQuery</span>
+                  <span class="tag">Cloud Storage</span>
+                  <span class="tag">Python</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="https://github.com/fikrukidane/ETL-Pipeline-on-Google-Cloud" target="_blank" rel="noreferrer">View Repo</a>
+              </div>
+            </article>
 
-    <div class="project">
-      <h3>Cloud ETL Pipelines</h3>
-      <p>
-        Data engineering and ETL workflow projects using cloud-native tools,
-        scalable processing pipelines, and operational analytics.
-      </p>
-    </div>
+            <article class="project-card">
+              <div>
+                <h3>Parking Ops Intelligence Bot</h3>
+                <div class="project-subtitle">AI-Assisted Operational Workflow System</div>
+                <p>Voice-first operational assistant using Telegram, Whisper, Ollama, Docker, SQLite, and Flask to convert field observations into structured incidents, follow-ups, handoffs, and communication coaching.</p>
+                <div class="stack" aria-label="Parking Ops Intelligence Bot stack">
+                  <span class="tag">Telegram Bot</span>
+                  <span class="tag">Whisper</span>
+                  <span class="tag">Ollama</span>
+                  <span class="tag">Docker</span>
+                  <span class="tag">SQLite</span>
+                  <span class="tag">Flask</span>
+                  <span class="tag">Python</span>
+                </div>
+              </div>
+              <div class="project-actions">
+                <a class="project-link" href="#contact">View Project or Coming Soon</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-    <div class="project">
-      <h3>Parking Ops Intelligence Bot</h3>
-      <p>
-        AI-assisted operational workflow and incident intelligence platform
-        using Telegram, Whisper, Ollama, Docker, and Flask.
-      </p>
-    </div>
+      <section class="section">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Technical Focus Areas</h2>
+              <p>High-level areas where business context, systems thinking, and implementation meet.</p>
+            </div>
+          </div>
 
-    <h2>Resume</h2>
+          <div class="focus-grid">
+            <div class="focus-item">Business Analysis</div>
+            <div class="focus-item">Solution Architecture</div>
+            <div class="focus-item">GIS / ETL</div>
+            <div class="focus-item">Data Engineering</div>
+            <div class="focus-item">BI &amp; Dashboards</div>
+            <div class="focus-item">Operational Intelligence</div>
+            <div class="focus-item">AI Workflow Systems</div>
+            <div class="focus-item">Docker / Linux Infrastructure</div>
+            <div class="focus-item">Local LLM Integration</div>
+          </div>
+        </div>
+      </section>
 
-    <p>
-      <a href="#">Download Resume PDF</a>
-    </p>
+      <section class="section">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Selected Tech Stack</h2>
+              <p>A practical stack centered on data pipelines, geospatial systems, analytics platforms, infrastructure, and local AI workflows.</p>
+            </div>
+          </div>
 
-    <div class="footer">
+          <div class="tech-groups">
+            <div class="tech-group">
+              <h3>Languages</h3>
+              <p>Python, SQL, JavaScript, Bash</p>
+            </div>
+            <div class="tech-group">
+              <h3>Data / GIS</h3>
+              <p>pandas, GDAL, GeoPandas, FME, PostGIS, MapServer, ArcGIS Enterprise, OpenLayers</p>
+            </div>
+            <div class="tech-group">
+              <h3>Cloud / Data Platforms</h3>
+              <p>GCP, BigQuery, Airflow, Cloud Data Fusion, Cloud Storage</p>
+            </div>
+            <div class="tech-group">
+              <h3>AI / NLP</h3>
+              <p>Ollama, OpenClaw, Hugging Face, spaCy, Whisper</p>
+            </div>
+            <div class="tech-group">
+              <h3>Infrastructure</h3>
+              <p>Docker, Docker Compose, Nginx, Apache, WSL2, Linux</p>
+            </div>
+            <div class="tech-group">
+              <h3>BI</h3>
+              <p>Power BI, Tableau, matplotlib, Data Studio</p>
+            </div>
+            <div class="tech-group">
+              <h3>APIs / Automation</h3>
+              <p>REST APIs, Plaid API, Telegram Bot API, Webhooks</p>
+            </div>
+            <div class="tech-group">
+              <h3>Positioning</h3>
+              <p>Business analysis, architecture, and implementation focused on structured, scalable, data-driven systems.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Background</h2>
+              <p>A concise snapshot of experience, domain depth, and availability.</p>
+            </div>
+          </div>
+
+          <div class="background-grid">
+            <div>
+              <ul>
+                <li>20+ years across telecom, BI, geospatial systems, and operational analytics.</li>
+                <li>Experience with Vodafone Italy, ZTE/EthioTelecom, ISON, FlexSolv, and Congruex.</li>
+                <li>Academic foundation in applied mathematics, GIS, spatial analysis, and management in the network economy.</li>
+                <li>Based in Dallas, Texas.</li>
+                <li>U.S. Permanent Resident.</li>
+                <li>Open to full-time, contract, and consulting opportunities.</li>
+              </ul>
+            </div>
+            <aside class="availability">
+              <strong>Professional profile</strong>
+              <p>Frank Kidane brings together business analysis, solution architecture, data engineering, and geospatial systems experience to design practical, high-value operational platforms.</p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Contact</h2>
+              <p>If you are hiring, exploring consulting support, or want to discuss a project, the best contact options are below.</p>
+            </div>
+          </div>
+
+          <div class="contact-grid">
+            <div class="contact-item">
+              <h3>GitHub</h3>
+              <p><a href="https://github.com/fikrukidane" target="_blank" rel="noreferrer">github.com/fikrukidane</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>LinkedIn</h3>
+              <!-- Replace the LinkedIn URL below with your real profile URL. -->
+              <p><a href="[add LinkedIn URL]" target="_blank" rel="noreferrer">[add LinkedIn URL]</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>Email</h3>
+              <p><a href="mailto:fikru.kidane@protonmail.com">fikru.kidane@protonmail.com</a></p>
+            </div>
+            <div class="contact-item">
+              <h3>Location</h3>
+              <p>Dallas, TX</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
       © 2026 Frank Kidane
-    </div>
-
+    </footer>
   </div>
-
 </body>
 </html>
