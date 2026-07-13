@@ -301,7 +301,8 @@
     .focus-grid,
     .tech-groups,
     .background-grid,
-    .contact-grid {
+    .contact-grid,
+    .education-grid {
       display: grid;
       gap: 14px;
     }
@@ -312,7 +313,8 @@
 
     .focus-item,
     .tech-group,
-    .contact-item {
+    .contact-item,
+    .education-item {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 16px;
@@ -330,7 +332,8 @@
     }
 
     .tech-group h3,
-    .contact-item h3 {
+    .contact-item h3,
+    .education-item h3 {
       font-size: 0.95rem;
       margin-bottom: 10px;
       color: var(--accent);
@@ -338,9 +341,14 @@
 
     .tech-group p,
     .contact-item p,
+    .education-item p,
     .background-grid li {
       color: #d8e3ff;
       margin-bottom: 0;
+    }
+
+    .education-grid {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
 
     .background-grid {
@@ -388,7 +396,8 @@
       .contact-grid,
       .tech-groups,
       .focus-grid,
-      .projects-grid {
+      .projects-grid,
+      .education-grid {
         grid-template-columns: 1fr;
       }
 
@@ -448,14 +457,6 @@
           <h1 id="hero-title">Frank Kidane</h1>
           <p class="subtitle">Experienced Business Analyst and Solution Architecture professional with 20+ years of experience across telecom, geospatial systems, data engineering, BI, and AI-assisted workflow systems.</p>
           <p class="intro">I design and build data, geospatial, and AI-assisted workflow systems that turn complex operations into structured intelligence.</p>
-
-          <div class="cta-group">
-            <a class="button button-primary" href="https://github.com/fikrukidane" target="_blank" rel="noreferrer">View GitHub</a>
-            <!-- TODO: Upload Frank-Kidane-Resume.pdf to repo root -->
-            <a class="button" href="./Frank-Kidane-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
-            <a class="button" href="https://www.linkedin.com/in/fikrukidane/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LinkedIn</a>
-            <a class="button" href="mailto:fikru.kidane@protonmail.com">Email Me</a>
-          </div>
         </div>
 
         <aside class="hero-aside" aria-label="Highlights">
@@ -472,6 +473,32 @@
             </ul>
           </div>
         </aside>
+      </section>
+
+      <section class="section">
+        <div class="section-card">
+          <div class="section-heading">
+            <div>
+              <h2>Education</h2>
+              <p>Academic foundation spanning applied mathematics, geospatial systems, and network economics.</p>
+            </div>
+          </div>
+
+          <div class="education-grid">
+            <div class="education-item">
+              <h3>M.S. — Management in the Network Economy</h3>
+              <p>Università Cattolica del Sacro Cuore di Piacenza, Italy<br />(in collaboration with UC Berkeley School of Information)</p>
+            </div>
+            <div class="education-item">
+              <h3>M.S. — Geographic Information Systems</h3>
+              <p>ITC (International Institute for Aerospace Survey and Earth Sciences), Netherlands</p>
+            </div>
+            <div class="education-item">
+              <h3>B.S. — Applied Mathematics (Minor: Computer Science)</h3>
+              <p>Addis Ababa University, Ethiopia</p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="section">
@@ -522,7 +549,7 @@
 
             <article class="project-card">
               <div>
-                <h3>Parking Ops Intelligence Bot</h3>
+                <h3>Property Ops Intelligence Bot</h3>
                 <div class="project-subtitle">AI-Assisted Operational Workflow System</div>
                 <p>Voice-first operational assistant using Telegram, Whisper, Ollama, Docker, SQLite, and Flask to convert field observations into structured incidents, follow-ups, handoffs, and communication coaching.</p>
                 <p class="stack-line">Telegram Bot · Whisper · Ollama · Docker · SQLite · Flask · Python</p>
@@ -618,7 +645,6 @@
               <ul>
                 <li>20+ years across telecom, BI, geospatial systems, and operational analytics.</li>
                 <li>Experience with Vodafone Italy, ZTE/EthioTelecom, ISON, FlexSolv, and Congruex.</li>
-                <li>Academic foundation in applied mathematics, GIS, spatial analysis, and management in the network economy.</li>
                 <li>Based in Dallas, Texas.</li>
                 <li>U.S. Permanent Resident.</li>
                 <li>Open to full-time, contract, and consulting opportunities.</li>
@@ -639,6 +665,13 @@
               <h2>Contact</h2>
               <p>If you are hiring, exploring consulting support, or want to discuss a project, the best contact options are below.</p>
             </div>
+          </div>
+
+          <div class="cta-group">
+            <a class="button button-primary" href="https://github.com/fikrukidane" target="_blank" rel="noreferrer">View GitHub</a>
+            <a class="button" href="./Frank-Kidane-Resume.pdf" target="_blank" rel="noreferrer">Download Resume</a>
+            <a class="button" href="https://www.linkedin.com/in/fikrukidane/" target="_blank" rel="noreferrer" aria-label="LinkedIn">LinkedIn</a>
+            <a class="button" href="mailto:fikru.kidane@protonmail.com">Email Me</a>
           </div>
 
           <div class="contact-grid">
