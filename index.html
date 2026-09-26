@@ -200,32 +200,27 @@
     .profile-portrait {
       position: relative;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      height: 340px;
-      margin: 0;
+      width: min(230px, 72vw);
+      aspect-ratio: 1;
+      margin: 0 auto;
       overflow: hidden;
-      border: 1px solid rgba(159, 176, 211, 0.16);
-      border-radius: 18px;
+      border: 2px solid rgba(110, 231, 249, 0.78);
+      border-radius: 50%;
       background: #10172d;
+      box-shadow:
+        0 16px 34px rgba(0, 0, 0, 0.28),
+        0 0 20px rgba(110, 231, 249, 0.14);
     }
 
     .profile-portrait img {
-      width: auto;
+      width: 100%;
       height: 100%;
       max-width: none;
-      object-fit: contain;
-      object-position: center bottom;
+      object-fit: cover;
+      object-position: center top;
       filter: saturate(0.92) contrast(1.04);
-    }
-
-    .profile-portrait::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0;
-      height: 20%;
-      background: linear-gradient(180deg, transparent, rgba(16, 23, 45, 0.68));
-      pointer-events: none;
     }
 
     .mini-card {
@@ -461,10 +456,6 @@
       .hero {
         padding: 22px;
         gap: 20px;
-      }
-
-      .profile-portrait {
-        height: 300px;
       }
 
       .button,
