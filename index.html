@@ -197,6 +197,37 @@
       align-content: start;
     }
 
+    .profile-portrait {
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      height: 340px;
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid rgba(159, 176, 211, 0.16);
+      border-radius: 18px;
+      background: #10172d;
+    }
+
+    .profile-portrait img {
+      width: auto;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: center bottom;
+      filter: saturate(0.92) contrast(1.04);
+    }
+
+    .profile-portrait::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 20%;
+      background: linear-gradient(180deg, transparent, rgba(16, 23, 45, 0.68));
+      pointer-events: none;
+    }
+
     .mini-card {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
@@ -432,6 +463,10 @@
         gap: 20px;
       }
 
+      .profile-portrait {
+        height: 300px;
+      }
+
       .button,
       .project-link {
         width: 100%;
@@ -464,7 +499,17 @@
           </div>
         </div>
 
-        <aside class="hero-aside" aria-label="Highlights">
+        <aside class="hero-aside" aria-label="Portrait and highlights">
+          <figure class="profile-portrait">
+            <img
+              src="./assets/frank-kidane-portrait.webp"
+              alt="Portrait of Frank Kidane"
+              width="636"
+              height="960"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </figure>
           <div class="mini-card">
             <h3>What I build</h3>
             <p>Structured systems for operational intelligence, decision support, geospatial workflows, and private AI-assisted automation.</p>
